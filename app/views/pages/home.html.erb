@@ -1,2 +1,88 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="header ">
+  <div class="container">
+    <div class="head-text">
+        <h1 style="color: white;">WELCOME TO BOOK AND PAY</h1>
+        <h4 style="color: white;">Easy Invoices and tracking for all types Bookings</h4>
+        <%= link_to 'Get Started', new_user_registration_path, class: "signup btn btn-primary" %>
+    </div>
+    <div class="head-form">
+      <h4>Get Started Now:</h4>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+       <%= f.error_notification %>
+
+        <div class="form-inputs">
+          <%= f.input :email,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" }%>
+          <%= f.input :password,
+                      required: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation,
+                      required: true,
+                      input_html: { autocomplete: "new-password" } %>
+        </div>
+
+        <div class="form-actions btn btn-outline-primary">
+          <%= f.button :submit, "Sign up" %>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="heading">
+    <h3>HOW IT WORKS:</h3>
+    <p>Automate your bookings and invoices</p>
+  </div>
+  <div class="usps d-flex justify-content-around">
+    <div class="usp" id="usp-one">
+      <i class="circle-icon fas fa-plus-circle"></i>
+      <H4>Create a booking</H4>
+      <p>Save bookings in our calendar so they're accessible anywhere, alongside notes and client details.</p>
+    </div>
+    <div class="usp" id="usp-two"ß>
+      <i class="circle-icon fas fa-link"></i>
+      <h4>Send an invoice</h4>
+      <p>A payment link (for a deposit or the full ammount) can be sent immediately via email or a link sent via SMS, whatsapp, social media etc.</p>
+    </div>
+    <div class="usp" id="usp-three">
+      <i class="circle-icon fas fa-money-bill-alt"></i>
+      <h4>Know when they've paid</h4>
+      <p>Your calendar will automatically update and tell you when a client has paid their invoice. </p>
+    </div>
+  </div>
+</div>
+<div class="simple">
+  <div class="container">
+    <div class="heading" id="head-two">
+      <h3>KEEP IT SIMPLE:</h3>
+      <p>Everything you need, nothing you don't.</p>
+    </div>
+    <div class="explainer" id="head-small">
+        <h4>A simple to use dashboard accessible anywhere</h4>
+        <p>Don't waste time with separate calendars and manual invoicing tools and don't worry about chasing payments any more, keep it simple with Book-N-Pay</p>
+      </div>
+    <div class="details d-flex justify-content-between">
+      <div class="image-holder" id="image-one">
+        <img src="https://via.placeholder.com/400x300">
+      </div>
+      <div class="explainer" id="explainer-large">
+        <h4>A simple to use dashboard accessible anywhere</h4>
+        <p>Don't waste time with separate calendars and manual invoicing tools and don't worry about chasing payments any more, keep it simple with Book-N-Pay</p>
+      </div>
+    </div>
+    <div class="details d-flex justify-content-between">
+      <div class="explainer">
+        <h4>Payments directly into your bank account</h4>
+        <p>Using Stripe (fully PCI compliant and secure) your customers can pay quickly and easily on their phone (with Apple Pay or Google Pay) or on their PC with any major credit card.</p>
+      </div>
+      <div class="image-holder" id="image-two">
+        <img src="https://via.placeholder.com/400x300">
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+

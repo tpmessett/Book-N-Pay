@@ -1,1 +1,334 @@
-// Specific CSS for your home-page
+.header {
+  min-height: 520px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), image-url('money.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.head-text {
+
+}
+
+.signup {
+  display: none;
+  width: 200px;
+}
+
+.head-form {
+  width: 380px;
+  background-color: $light-gray;
+  padding: 24px 32px;
+  position: absolute;
+  right: 50px;
+  bottom: 130px;
+  box-shadow: 0 0 16px rgba(0,0,0,0.25);
+}
+
+.usps {
+  margin-top: 0;
+  padding-bottom: 40px;
+
+}
+
+.usp {
+  flex-grow: 1;
+  text-align: center;
+  padding: 0 48px;
+  flex-basis: 0;
+}
+
+#usp-one {
+  padding-left: 0 !important;
+}
+
+#usp-three {
+  padding-right: 0 !important;
+}
+
+.circle-icon {
+    background: $orange;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    padding: 12px;
+    color: white;
+    margin-bottom: 20px;
+    font-size: 24px;
+    line-height: 32px;
+
+}
+
+.circle-icon:hover {
+  background: white;
+  color: $orange;
+}
+
+.simple {
+  width: 100%;
+  padding: 40px 0;
+  margin: 0;
+  background-color: $light-gray;
+}
+
+.heading {
+  text-align: center;
+  margin: 44px auto;
+  margin-bottom: 40px;
+}
+
+#head-two {
+  margin: 0 auto;
+  margin-bottom: 40px
+}
+
+.explainer {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.image-holder {
+  flex-basis: 32em;
+  min-height: 300px;
+  min-width: 450px;
+  position: relative;
+}
+
+#image-one {
+  text-align: left;
+}
+
+#image-two {
+  text-align: right;
+}
+
+.btn:hover {
+  color: $background !important;
+}
+
+#head-small {
+    display: none;
+  }
+
+@media (min-width: 100px) and (max-width: 575px) {
+.details {
+  display: flex;
+  margin-bottom: 40px;
+}
+
+  #usp-one {
+  padding: 0 !important;
+}
+
+ #usp-two {
+  padding: 0 !important;
+}
+
+#usp-three {
+  padding: 0 !important;
+}
+
+  .usps {
+    flex-direction: column;
+  }
+
+  .details {
+    flex-direction: column;
+  }
+  .explainer {
+    margin: 0 auto;
+  }
+
+    .head-form {
+    display: none;
+  }
+
+  .head-text {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .signup {
+    display: block;
+  }
+
+   .head-text h1 {
+  font-size: 2rem
+  }
+
+  .head-text h4 {
+  font-size: 1rem
+  }
+
+   #image-one {
+  text-align: center;
+  }
+
+  #image-two {
+    text-align: center;
+  }
+
+  .explainer {
+  margin-top: 0px;
+  }
+
+  .image-holder {
+ min-height: 0px;
+  flex-basis: 20em;
+  }
+}
+
+  #head-two {
+    display: none;
+  }
+
+  #head-small {
+    display: block;
+  }
+
+  #explainer-large {
+    display: none;
+  }
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 768px){
+  #usp-one {
+  padding: 0 !important;
+}
+
+ #usp-two {
+  padding: 0 !important;
+}
+
+#usp-three {
+  padding: 0 !important;
+}
+
+  #head-two {
+    display: none;
+  }
+
+  #head-small {
+    display: block;
+  }
+
+  #explainer-large {
+    display: none;
+  }
+
+ .usps {
+    flex-direction: column;
+  }
+
+  .details {
+    flex-direction: column;
+  }
+
+  .explainer {
+    margin: 0 auto;
+  }
+
+  .head-form {
+    display: none;
+  }
+
+  .head-text {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .signup {
+    display: block;
+  }
+
+
+  .head-text h1 {
+  font-size: 2rem
+  }
+
+  .head-text h4 {
+  font-size: 1rem
+  }
+
+  #image-one {
+  text-align: center;
+  }
+
+  #image-two {
+    text-align: center;
+  }
+
+  .explainer {
+  margin-top: 0px;
+  }
+
+  .image-holder {
+  min-height: 0px;
+  flex-basis: 20em;
+  }
+
+}
+
+// Med devices (desktops, 768px to 991px)
+@media (min-width: 768px) and (max-width: 991px){
+
+
+  .explainer {
+  flex-basis: 25em;
+  margin-top: 20px;
+  }
+
+  .head-form {
+    display: none;
+  }
+
+  .head-text {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .signup {
+    display: block;
+  }
+
+  .details {
+    margin-bottom: 20px;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199px) {
+  .explainer {
+  flex-basis: 25em;
+  }
+
+  .head-text h1 {
+  font-size: 2rem;
+  }
+
+  .head-text h4 {
+  font-size: 1.5rem;
+  }
+
+  .head-form {
+    width: 340px;
+    right: 40px;
+    bottom: 150px;
+  }
+
+}

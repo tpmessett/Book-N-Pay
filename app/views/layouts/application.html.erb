@@ -4,6 +4,17 @@
     <title>BookNPay</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="description" content="Use book-n-pay to book jobs and take payments easily via social networks">
+    <meta robots="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Book-N-Pay">
+    <meta property="og:description" content="Use book-n-pay to book jobs and take payments easily via social networks">
+    <meta property="og:image" content="<%= image_url('money.jpg') %>">
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="twitter:title" content="Book-N-Pay">
+    <meta property="twitter:description" content="Use book-n-pay to book jobs and take payments easily via social networks">
+    <meta property="twitter:image" content="<%= image_url('money.jpg') %>">
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -14,7 +25,9 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-
-    <%= yield %>
-  </body>
+    <div class="content">
+      <%= yield %>
+    </div>
+  <%= render 'shared/footer' %>
+</body>
 </html>

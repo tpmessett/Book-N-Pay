@@ -1,6 +1,22 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  color: $dark-grey;
+  background-color: transparent;
+  transition: 0.2s background-color ease;
+}
+
+.navbar-brand {
+  margin-right: 0;
+}
+
+.navbar-brand a {
+  padding: 0;
+}
+
+.navbar-lewagon-grey {
+  background-color: $dark-grey;
+  box-shadow: 0 2px 2px -2px #000F08;
+
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -10,3 +26,63 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar-toggler-icon {
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+  border: 2px, solid, white
+}
+
+.circle-icon-nav {
+    background: $background;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+    color: $orange
+}
+
+.circle-icon-nav:hover {
+  background: rgba(0, 0, 0, 0.0);
+  color: $background;
+  background-color: $dark-grey;
+}
+
+
+.navbar-light .navbar-nav .nav-link {
+  color: $orange;
+  margin-right: 10px
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  background-color: $background;
+}
+
+.fa-user {
+  width: 20px;
+  height: 20px;
+}
+
+#navbarSupportedContent {
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+#nav-dropdowns {
+    margin-left: auto
+}
+
+#navbarDropdown {
+
+}
+
+
+#ul-nav {
+  margin-left: auto
+}
+
+

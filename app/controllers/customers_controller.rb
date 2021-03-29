@@ -1,10 +1,10 @@
 class CustomersController < ApplicationController
   def index
-    @customers = Customer.all
+    @customers = policy_scope(Customer).all
   end
 
   def show
-    @customer = Customer.find(params[:id])
+    @customer = policy_scope(Customer).find(params[:id])
   end
 
   def new
@@ -12,7 +12,7 @@ class CustomersController < ApplicationController
   end
 
   def create
-    @customer = customer.new(customer_params)
+    @customer = Customer.new(customer_params)
     @customer.user = current_user
     if @customer.save
       redirect_to customer_path(@customer)
@@ -22,19 +22,19 @@ class CustomersController < ApplicationController
   end
 
   def destroy
-    @customer = Customer.find(params[:id])
+    @customer = policy_scope(Customer).find(params[:id])
     @customer.destroy
     redirect_to customers_path
   end
 
   def update
-    @customer = Customer.find(params[:id])
+    @customer = policy_scope(Customer).find(params[:id])
     @customer.update(customer_params)
     redirect_to customer_path(@customer)
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = policy_scope(Customer).find(params[:id])
   end
 
   private
