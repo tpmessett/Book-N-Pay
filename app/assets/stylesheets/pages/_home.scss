@@ -185,9 +185,8 @@
  min-height: 0px;
   flex-basis: 20em;
   }
-}
 
-  #head-two {
+    #head-two {
     display: none;
   }
 
@@ -198,6 +197,7 @@
   #explainer-large {
     display: none;
   }
+}
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) and (max-width: 768px){
@@ -315,6 +315,7 @@
 @media (min-width: 992px) and (max-width: 1199px) {
   .explainer {
   flex-basis: 25em;
+  margin-top: 40px;
   }
 
   .head-text h1 {
