@@ -1,6 +1,6 @@
 class CustomerPolicy < ApplicationPolicy
   def index?
-    true
+    record.user == user
   end
 
   class Scope

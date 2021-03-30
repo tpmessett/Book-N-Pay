@@ -1,11 +1,13 @@
 class BookingsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     start_date = params.fetch(:start_date, Date.today).to_date
-    @bookings = policy_scope(Booking).where(starts_at: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
+    @bookings = Booking.where(starts_at: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
   end
 
   def show
-    @booking = policy_scope(Booking).find(params[:id])
+    @booking = Booking.find(params[:id])
   end
 
   def new
@@ -25,19 +27,19 @@ class BookingsController < ApplicationController
   end
 
  def destroy
-    @booking = policy_scope(Booking).find(params[:id])
+    @booking = Booking.find(params[:id])
     @booking.destroy
     redirect_to bookings_path
   end
 
   def update
-    @booking = policy_scope(Booking).find(params[:id])
+    @booking = Booking.find(params[:id])
     @booking.update(booking_params)
     redirect_to booking_path(@booking)
   end
 
   def edit
-    @booking = policy_scope(Booking).find(params[:id])
+    @booking = Booking.find(params[:id])
   end
 
   private

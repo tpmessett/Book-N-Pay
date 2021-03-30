@@ -1,10 +1,17 @@
 class BookingPolicy < ApplicationPolicy
-  def index?
-    true
+  attr_reader :user, :record
+
+  def initialize(user, record)
+    @user = user
+    @record = record
   end
 
-    def show?
-    true
+  def index?
+    record.user == user
+  end
+
+  def show?
+    record.user == user
   end
 
   def create?
@@ -16,7 +23,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    record.user == user
   end
 
   def edit?
@@ -24,7 +31,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def destroy?
-    true
+    record.user == user
   end
 
   class Scope

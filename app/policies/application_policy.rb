@@ -7,11 +7,11 @@ class ApplicationPolicy
   end
 
   def index?
-    true
+    record.user == user
   end
 
   def show?
-    true
+    record.user == user
   end
 
   def create?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    true
+    record.user == user
   end
 
   def edit?

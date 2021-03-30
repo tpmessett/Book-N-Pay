@@ -1,10 +1,12 @@
 class CustomersController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @customers = policy_scope(Customer).all
+    @customers = Customer.all
   end
 
   def show
-    @customer = policy_scope(Customer).find(params[:id])
+    @customer = Customer.find(params[:id])
   end
 
   def new
@@ -22,19 +24,19 @@ class CustomersController < ApplicationController
   end
 
   def destroy
-    @customer = policy_scope(Customer).find(params[:id])
+    @customer = Customer.find(params[:id])
     @customer.destroy
     redirect_to customers_path
   end
 
   def update
-    @customer = policy_scope(Customer).find(params[:id])
+    @customer = Customer.find(params[:id])
     @customer.update(customer_params)
     redirect_to customer_path(@customer)
   end
 
   def edit
-    @customer = policy_scope(Customer).find(params[:id])
+    @customer = Customer.find(params[:id])
   end
 
   private

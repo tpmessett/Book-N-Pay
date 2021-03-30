@@ -28,11 +28,11 @@
 }
 
 .navbar-toggler-icon {
-  background-color: white;
-  padding: 10px;
+  background-color: $background;
+  padding: 20px;
   text-align: center;
   vertical-align: middle;
-  border: 2px, solid, white
+  border-radius: 2px;
 }
 
 .circle-icon-nav {
@@ -43,7 +43,8 @@
     text-align: center;
     vertical-align: middle;
     padding: 10px;
-    color: $orange
+    color: $orange;
+    margin-right: 10px;
 }
 
 .circle-icon-nav:hover {
@@ -80,9 +81,13 @@
 
 }
 
-
 #ul-nav {
   margin-left: auto
 }
+
+.nav-item {
+  text-align: right;
+}
+
 
 
