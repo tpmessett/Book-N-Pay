@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="page-details">
+    <h3>New Customer</h3>
+    <%= simple_form_for @customer do |f| %>
+    <%= f.input :name %>
+    <%= f.input :email %>
+    <%= f.input :phone %>
+    <%= f.input :notes %>
+    <%= f.input :address %>
+    <%= f.submit "Add New Customer", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

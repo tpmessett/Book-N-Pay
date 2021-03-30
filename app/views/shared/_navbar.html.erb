@@ -11,7 +11,10 @@
         <% if current_user %>
           <ul id="ul-nav" class="navbar-nav">
               <li class="nav-item">
-                <%= link_to "View Your Calendar", bookings_path, class: "nav-link" %>
+                <%= link_to "View Calendar", bookings_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "View Customers", customers_path, class: "nav-link" %>
               </li>
 
                 <span id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="circle-icon-nav"><i class="far fa-user"></i></span>
