@@ -12,6 +12,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @customers = Customer.all
   end
 
   def create

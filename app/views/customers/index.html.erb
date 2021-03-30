@@ -1,0 +1,25 @@
+<div class ="container">
+  <div class="page-details">
+    <% if @customers.length > 0 %>
+    <div class="list-header d-flex justify-content-between">
+      <H2>Your Customers</H2>
+      <%= link_to "Add New Customer", new_customer_path, method: :get, class: "add-booking btn btn-primary" %>
+    </div>
+    <div class="list-container">
+      <% @customers.each do |customer| %>
+      <div class="list-card">
+        <div>
+          <p><%= customer.name %> - <%= customer.email %></p>
+          <span><%= customer.address %></span>
+        </div>
+        <div>
+          <%= link_to "View Customer Bookings", bookings_path, class: 'btn btn-outline-primary' %>
+        </div>
+      </div>
+      <% end %>
+      <% else %>
+      <p class="my-5"> You don't have any customers yet. Why not <%= link_to "add one?", new_customer_path %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
