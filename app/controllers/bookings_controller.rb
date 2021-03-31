@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
-    @customers = Customer.all
+    @customers = Customer.where(user: current_user)
   end
 
   def create
@@ -24,7 +24,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to booking_path(@booking)
     else
-      raise
+
       render :new
     end
   end

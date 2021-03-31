@@ -1,6 +1,6 @@
 class CustomerPolicy < ApplicationPolicy
   def index?
-    record.user == user
+    record.user == @user
   end
 
   class Scope
@@ -12,13 +12,8 @@ class CustomerPolicy < ApplicationPolicy
     end
 
     def resolve
-      if user.admin? || user.moderator?
-        scope.all
-      else
         scope.where(user: user)
-      end
     end
-
   end
 
 end

@@ -1,20 +1,59 @@
 <div class="container">
   <div class="page-details">
-    <div class="list-header d-flex justify-content-between">
-      <H2>Your Calendar</H2>
-      <%= link_to "Add Booking", new_booking_path, method: :get, class: "add-booking btn btn-primary" %>
-    </div>
-    <%= month_calendar(events: @bookings) do |date, bookings| %>
-      <%= date %>
-      <% @bookings.each do |booking| %>
-        <% if booking.start_time == date %>
+    <div id="months-bookings">
+      <div class="list-header d-flex justify-content-between">
+        <H2>Your Monthly Overview</H2>
         <div>
-          <%= booking.customer.name %>
-
+          <a id="view-day" class="add-booking btn btn-outline-primary"> Today's bookings </a>
+          <%= link_to "Add Booking", new_booking_path, method: :get, class: "add-booking btn btn-primary" %>
         </div>
+      </div>
+      <%= month_calendar(events: @bookings) do |date, bookings| %>
+        <%= date %>
+        <% @bookings.each do |booking| %>
+          <% if booking.start_time == date && booking.user == current_user %>
+          <div>
+            <%= booking.customer.name %>
+
+          </div>
+          <% end %>
         <% end %>
+        <%= link_to "+", new_booking_path, method: :get %>
       <% end %>
-      <%= link_to "+", new_booking_path, method: :get %>
-    <% end %>
+  </div>
+    <div id="todays-bookings">
+      <div class="list-header d-flex justify-content-between">
+        <H2>Today's bookings</H2>
+        <div>
+          <a id="view-month" class="add-booking btn btn-outline-primary"> Monthly Overview </a>
+          <%= link_to "Add Booking", new_booking_path, method: :get, class: "add-booking btn btn-primary" %>
+        </div>
+      </div>
+      <div class="list-container">
+        <% @bookings.each do |booking| %>
+          <% if booking.start_time == Date.today && booking.user == current_user %>
+            <div class="list-card">
+              <div>
+                <span><%= booking.start_time.strftime('%a %d %b').to_s %> - <%= booking.end_time.strftime('%a %d %b') %></span>
+                <p><%= booking.customer.name %> - <%= booking.customer.email %> - £<%= booking.price %></p>
+                <p><%= booking.notes%></p>
+                <% if booking.customer.email? %>
+                  <p>E: <%= booking.customer.email %></p>
+                <% end %>
+                <% if booking.customer.phone? %>
+                  <p>P: <%= booking.customer.phone %></p>
+                <% end %>
+                <% if booking.customer.address? %>
+                  <p>A: <%= booking.customer.address %></p>
+                <% end %>
+              </div>
+              <div>
+                <%= link_to "View Customer Bookings", bookings_path, class: 'btn btn-outline-primary' %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

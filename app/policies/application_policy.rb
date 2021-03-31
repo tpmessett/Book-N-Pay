@@ -43,7 +43,10 @@ class ApplicationPolicy
     end
 
     def resolve
-      scope.all
+      if user.admin?
+        scope.all
+      else
+        scope.where(user: current_user)
     end
   end
 end

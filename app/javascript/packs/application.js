@@ -25,12 +25,15 @@ require("channels")
 // External imports
 import "bootstrap";
 import { initUpdateNavbarOnScroll } from '../components/navbar';
-
+import { toggleCalendar } from '../components/calendar';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
   if (document.querySelector('.usp')) {
     initUpdateNavbarOnScroll();
+  }
+  if (document.getElementById('todays-bookings')) {
+    toggleCalendar();
   }
 });
