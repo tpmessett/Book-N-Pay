@@ -4,8 +4,16 @@
       <H2>Your Calendar</H2>
       <%= link_to "Add Booking", new_booking_path, method: :get, class: "add-booking btn btn-primary" %>
     </div>
-    <%= month_calendar do |date| %>
+    <%= month_calendar(events: @bookings) do |date, bookings| %>
       <%= date %>
+      <% @bookings.each do |booking| %>
+        <% if booking.start_time == date %>
+        <div>
+          <%= booking.customer.name %>
+
+        </div>
+        <% end %>
+      <% end %>
       <%= link_to "+", new_booking_path, method: :get %>
     <% end %>
   </div>

@@ -2,8 +2,9 @@ class BookingsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    start_date = params.fetch(:start_date, Date.today).to_date
-    @bookings = Booking.where(starts_at: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
+    start_date = params.fetch(:start_time, Date.today).to_date
+    @bookings = Booking.where(start_time: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
+
   end
 
   def show
@@ -16,13 +17,14 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @customer = Customer.find(params[:customer_id])
+    @customer = Customer.find(params[:booking][:customer])
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.customer = @customer
     if @booking.save
       redirect_to booking_path(@booking)
     else
+      raise
       render :new
     end
   end
@@ -46,7 +48,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :customer_id, :user_id)
+    params.require(:booking).permit(:start_time, :end_time, :customer_id, :user_id, :price, :notes)
   end
 
 end
