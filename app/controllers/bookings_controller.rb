@@ -18,14 +18,17 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @customer = Customer.find(params[:booking][:customer])
+    if params[:booking][:customer].to_i == 0
+      @customer = Customer.where(name: params[:booking][:customer]).where(user: current_user).last
+    else
+      @customer = Customer.find(params[:booking][:customer])
+    end
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.customer = @customer
     if @booking.save
       redirect_to booking_path(@booking)
     else
-
       render :new
     end
   end

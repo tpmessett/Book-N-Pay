@@ -16,7 +16,9 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
     @customer.user = current_user
-    if @customer.save
+    if @customer.save && params[:formsrc] == "booking"
+      @customer.id
+    elsif @customer.save
       redirect_to customer_path(@customer)
     else
       render :new
@@ -42,7 +44,7 @@ class CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:email, :phone, :notes, :address, :name)
+    params.require(:customer).permit(:email, :phone, :notes, :address, :name, :formsrc)
   end
 
 end
