@@ -3,8 +3,13 @@
     <div class="head-text">
         <h1 style="color: white;">WELCOME TO BOOK AND PAY</h1>
         <h4 style="color: white;">Easy Invoices and tracking for all types Bookings</h4>
+        <%if user_signed_in? == false %>
         <%= link_to 'Get Started', new_user_registration_path, class: "signup btn btn-primary" %>
+        <% else %>
+        <%= link_to 'View Calendar', bookings_path, class: "btn btn-primary" %>
+        <% end %>
     </div>
+    <%if user_signed_in? == false %>
     <div class="head-form">
       <h4>Get Started Now:</h4>
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -29,6 +34,7 @@
         </div>
       <%end%>
     </div>
+    <%end%>
   </div>
 </div>
 <div class="container">

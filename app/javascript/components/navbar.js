@@ -5,7 +5,7 @@ const initUpdateNavbarOnScroll = () => {
     navbar.classList.remove('navbar-lewagon-grey');
   }
     window.addEventListener('scroll', () => {
-      if (window.scrollY >= (0.5*window.innerHeight)) {
+      if (window.scrollY >= (0.2*window.innerHeight)) {
         navbar.classList.add('navbar-lewagon-grey');
       } else {
         navbar.classList.remove('navbar-lewagon-grey');

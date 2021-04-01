@@ -13,6 +13,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @customer = Customer.new
     @customers = Customer.where(user: current_user)
   end
 

@@ -1,13 +1,45 @@
-<div class="container">
-  <div class="page-details">
+<div class="form-holder">
+  <div class="main-form">
     <h3>New booking</h3>
     <%= simple_form_for(@booking) do |f| %>
-    <div class="date_picker"><%= f.input :start_time, as: :date, html5: true, label: false, input_html: { value: Date.today } %></div>
-    <div class="date_picker"><%= f.input :end_time, as: :date, html5: true, label: false, input_html: { value: Date.today } %></div>
-    <%= f.input :customer, label_method: :name, value_method: :id, collection: @customers %>
+    <div class="d-flex align-items-center">
+      <div class="date_picker"><%= f.input :start_time, label: 'Booking Start Date', as: :date, html5: true, input_html: { value: Date.today } %></div>
+      <div class="date_picker"><%= f.input :end_time, label: 'Booking End Date', as: :date, html5: true, input_html: { value: Date.today } %></div>
+    </div>
+    <div class="d-flex align-items-center">
+      <div class="selector"><%= f.input :customer, label_method: :name, value_method: :id, collection: @customers %></div>
+      <a href = "#" data-toggle="modal" data-target="#exampleModalCenter" id="new-customer" class="btn btn-primary">New Customer</a>
+    </div>
     <%= f.input :price %>
     <%= f.input :notes %>
     <%= f.submit "Create booking", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
+
+<!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="m-head modal-header-footer modal-header">
+                  <h3 class="modal-title" id="exampleModalLongTitle">Add a New Customer</h3>
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                    <div class="modal-form">
+                      <%= simple_form_for @customer do |f| %>
+                      <%= f.input :name %>
+                      <%= f.input :email %>
+                      <%= f.input :phone %>
+                      <%= f.input :notes %>
+                      <%= f.input :address %>
+                      <%= f.submit "Add New Customer", class: "btn btn-primary" %>
+                      <% end %>
+                    </div>
+                     <div class="m-foot modal-header-footer modal-footer">
+                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                     </div>
+                  </form>
+              </div>
+            </div>
+          </div>
