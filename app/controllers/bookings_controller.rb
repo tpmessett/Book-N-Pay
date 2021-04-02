@@ -18,6 +18,7 @@ class BookingsController < ApplicationController
   end
 
   def create
+
     if params[:booking][:customer].to_i == 0
       @customer = Customer.where(name: params[:booking][:customer]).where(user: current_user).last
     else
@@ -26,6 +27,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.customer = @customer
+    @booking.price = params[:booking][:price].to_f*100
     if @booking.save
       redirect_to booking_path(@booking)
     else

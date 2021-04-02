@@ -2,7 +2,8 @@ class CustomersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @customers = Customer.where(user: current_user)
+    customers = Customer.where(user: current_user)
+    @customers = customers.reverse
   end
 
   def show
@@ -19,7 +20,7 @@ class CustomersController < ApplicationController
     if @customer.save && params[:formsrc] == "booking"
       @customer.id
     elsif @customer.save
-      redirect_to customer_path(@customer)
+      redirect_to customers_path
     else
       render :new
     end

@@ -35,7 +35,7 @@
             <div class="list-card">
               <div>
                 <span><%= booking.start_time.strftime('%a %d %b').to_s %> - <%= booking.end_time.strftime('%a %d %b') %></span>
-                <p><%= booking.customer.name %> - <%= booking.customer.email %> - £<%= booking.price %></p>
+                <p><%= booking.customer.name %> - <%= booking.customer.email %> - <%= number_to_currency((booking.price.to_f/100), unit: '£') %></p>
                 <p><%= booking.notes%></p>
                 <% if booking.customer.email? %>
                   <p>E: <%= booking.customer.email %></p>
