@@ -2,9 +2,21 @@ class BookingsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    start_date = params.fetch(:start_time, Date.today).to_date
-    @bookings = Booking.where(start_time: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
+    if params.has_key?(:start_date)
+      @date = params.fetch(:start_date).to_date
+    else
+      @date = Date.today
+    end
+    customer_bookings = Booking.where(user: current_user)
+    @bookings = customer_bookings.where(start_time: @date.beginning_of_month.beginning_of_week..@date.end_of_month.end_of_week)
 
+    if params.has_key?(:start) && params.has_key?(:view)
+      @start = params[:start]
+      @ending = params[:end]
+      @bookings = customer_bookings.where('start_time >= ?', @start.to_date).where('start_time <= ?', @ending.to_date).all
+    elsif params.has_key?(:view)
+      @bookings = customer_bookings.where('start_time >= ?', Date.today).where('start_time <= ?', Date.today).all
+    end
   end
 
   def show
@@ -18,7 +30,6 @@ class BookingsController < ApplicationController
   end
 
   def create
-
     if params[:booking][:customer].to_i == 0
       @customer = Customer.where(name: params[:booking][:customer]).where(user: current_user).last
     else

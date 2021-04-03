@@ -10,6 +10,7 @@ import "bootstrap";
 // Internal imports
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { toggleCalendar } from '../components/calendar';
+import { getUrlVars } from '../components/calendar';
 import { toggleModal } from '../components/modal';
 
 document.addEventListener('turbolinks:load', () => {
@@ -18,6 +19,7 @@ document.addEventListener('turbolinks:load', () => {
   }
   if (document.getElementById('todays-bookings')) {
     toggleCalendar();
+    getUrlVars();
   }
   if (document.getElementById('new-customer-modal-submit')) {
     toggleModal();

@@ -57,6 +57,20 @@
   background-color: $background;
 }
 
+.date-pickers {
+  text-align: right;
+  input {
+    color: $dark-grey;
+    background-color: $background;
+    border-width: 1px;
+    border-color: $dark-grey;
+    border-image: none;
+    padding: 1px;
+  }
+}
+
+
+
 @media (max-width: 576px) {
 
 #customer-form {

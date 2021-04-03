@@ -4,7 +4,7 @@
       <div class="list-header d-flex justify-content-between">
         <H2>Your Monthly Overview</H2>
         <div>
-          <a id="view-day" class="add-booking btn btn-outline-primary"> Today's bookings </a>
+          <a id="view-day" class="add-booking btn btn-outline-primary"> List View </a>
           <%= link_to "Add Booking", new_booking_path, method: :get, class: "add-booking btn btn-primary" %>
         </div>
       </div>
@@ -12,7 +12,7 @@
         <%= date %>
         <%= link_to "+", new_booking_path, method: :get %>
         <% @bookings.each do |booking| %>
-          <% if booking.start_time == date && booking.user == current_user %>
+          <% if booking.start_time == date %>
           <div>
             <%= booking.customer.name %>
 
@@ -20,6 +20,7 @@
           <% end %>
         <% end %>
       <% end %>
+
   </div>
     <div id="todays-bookings">
       <div class="list-header d-flex justify-content-between">
@@ -29,9 +30,24 @@
           <%= link_to "Add Booking", new_booking_path, method: :get, class: "add-booking btn btn-primary" %>
         </div>
       </div>
+      <div class="date-pickers">
+        <label for="start">Start date:</label>
+        <% if params.has_key?(:start) %>
+        <input type="date" id="start" name="date-start" value="<%= @start %>">
+        <% else %>
+        <input type="date" id="start" name="date-start" value="<%= @date %>">
+        <% end %>
+        <label for="start">End date:</label>
+        <% if params.has_key?(:end) %>
+        <input type="date" id="end" name="date-end" value="<%= @ending %>">
+        <% else %>
+        <input type="date" id="end" name="date-end" value="<%= @date %>">
+        <% end %>
+        <a id="filter" class="add-booking btn btn-outline-primary"> Filter Dates</a>
+      </div>
       <div class="list-container">
+
         <% @bookings.each do |booking| %>
-          <% if booking.start_time == Date.today && booking.user == current_user %>
             <div class="list-card">
               <div>
                 <span><%= booking.start_time.strftime('%a %d %b').to_s %> - <%= booking.end_time.strftime('%a %d %b') %></span>
@@ -51,7 +67,6 @@
                 <%= link_to "View Customer Bookings", bookings_path, class: 'btn btn-outline-primary' %>
               </div>
             </div>
-          <% end %>
         <% end %>
       </div>
     </div>
