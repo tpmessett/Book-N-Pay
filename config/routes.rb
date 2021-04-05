@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :bookings
   resources :customers
+  resources :products
   get '/user' => "bookings#index", :as => :user_root
 end

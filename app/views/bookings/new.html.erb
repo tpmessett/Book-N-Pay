@@ -2,17 +2,39 @@
   <div class="main-form">
     <h3>New booking</h3>
     <%= simple_form_for(@booking) do |f| %>
-    <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center justify-content-between">
       <div class="date_picker"><%= f.input :start_time, label: 'Booking Start Date', as: :date, html5: true, input_html: { value: Date.today } %></div>
       <div class="date_picker"><%= f.input :end_time, label: 'Booking End Date', as: :date, html5: true, input_html: { value: Date.today } %></div>
     </div>
-    <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center justify-content-between">
       <div class="selector"><%= f.input :customer, label_method: :name, value_method: :id, collection: @customers %></div>
       <a href = "#" data-toggle="modal" data-target="#exampleModalCenter" id="new-customer" class="btn btn-primary">New Customer</a>
     </div>
-    <%= f.input :price %>
-    <%= f.input :notes %>
-    <%= f.submit "Create booking", class: "btn btn-primary" %>
+    <div id="simple-invoice">
+      <a id="itemised-button" class="btn btn-primary">Use itemised invoice</a>
+      <hr>
+      <h4>Simple Invoice</h4>
+      <%= f.hint 'With Simple Invoice you just enter a service description and price, for a detailed breakdown use our itemised invoice' %>
+      <%= f.input :customer_note, label: 'Service Description'%>
+      <%= f.hint 'The Service Description is how you describe what you are charging your customer for. and is visible to them on the invoice.' %>
+      <%= f.input :price %>
+      <%= f.input :notes, label: 'Internal Notes'%>
+      <%= f.hint 'Internal Notes are only visible to you, not the customer' %>
+      <%= f.submit "Create booking", class: "btn btn-primary" %>
+    </div>
+    <!-- itemised invoice options -->
+    <div id="itemised">
+      <a id="simple-button" class="btn btn-primary">Use Simple invoice</a>
+      <hr>
+      <h4>Itemised Invoice</h4>
+      <%= f.hint 'With the Itemised Invoice you just enter a detailed breakdown of each item, or resource used.' %>
+      <%= f.input :customer_note, label: 'Service Description'%>
+      <%= f.hint 'The Service Description is how you describe what you are charging your customer for. and is visible to them on the invoice.' %>
+      <%= f.input :price %>
+      <%= f.input :notes, label: 'Internal Notes'%>
+      <%= f.hint 'Internal Notes are only visible to you, not the customer' %>
+      <%= f.submit "Create booking", class: "btn btn-primary" %>
+    </div>
     <% end %>
   </div>
 </div>

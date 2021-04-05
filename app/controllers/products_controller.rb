@@ -5,10 +5,6 @@ before_action :authenticate_user!
     @products = Product.where(user: current_user)
   end
 
-  def show
-    @product = Product.find(params[:id])
-  end
-
   def new
     @product = Product.new
   end
@@ -29,16 +25,6 @@ before_action :authenticate_user!
     @product = Product.find(params[:id])
     @product.destroy
     redirect_to products_path
-  end
-
-  def update
-    @product = Product.find(params[:id])
-    @product.update(product_params)
-    redirect_to products_path
-  end
-
-  def edit
-    @product = Product.find(params[:id])
   end
 
   private

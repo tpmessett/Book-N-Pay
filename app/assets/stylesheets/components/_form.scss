@@ -36,7 +36,7 @@
 
 .date_picker input {
   margin-left: 0 !important;
-  margin-right: 12px !important;
+  margin-right: 12px;
 }
 
 #booking_start_time {
@@ -69,7 +69,30 @@
   }
 }
 
+.booking_customer_note {
+  margin-bottom: 2px
+}
 
+.booking_notes {
+  margin-bottom: 2px
+}
+
+.text-muted {
+  margin-bottom: 16px;
+  max-width: 412px;
+}
+
+#booking_end_time {
+  margin-right: 0 !important
+}
+
+#booking_start_time {
+  margin-right: 12px !important
+}
+
+#itemised {
+  display: none;
+}
 
 @media (max-width: 576px) {
 

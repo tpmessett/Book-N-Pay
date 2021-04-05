@@ -12,6 +12,7 @@ import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { toggleCalendar } from '../components/calendar';
 import { getUrlVars } from '../components/calendar';
 import { toggleModal } from '../components/modal';
+import { toggleBookingType } from '../components/bookingcreation';
 
 document.addEventListener('turbolinks:load', () => {
   if (document.querySelector('.usp')) {
@@ -23,6 +24,6 @@ document.addEventListener('turbolinks:load', () => {
   }
   if (document.getElementById('new-customer-modal-submit')) {
     toggleModal();
-    console.log("init")
+    toggleBookingType();
   }
 });
